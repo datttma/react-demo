@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 
 export default class RenderWithMap extends Component {
-  producList = [
+  state={
+    producList :[
     { id: 1, name: "iphone 2G", price: 1000 },
     { id: 2, name: "iphone 3G", price: 2000 },
     { id: 3, name: "iphone 4", price: 3000 },
     { id: 4, name: "iphone 5", price: 5000 },
-  ];
+  ]
+  }
   renderProduct = () => {
     let arrProductJSX = [];
     //binding cách 1
@@ -28,9 +30,9 @@ export default class RenderWithMap extends Component {
 
     // }
     //cách 2
-   return this.producList.map((productItem,index)=>{
+   return this.state.producList.map((productItem,index)=>{
        return (
-         <tr key={id}>
+         <tr key={index}>
            <td>{productItem.id}</td>
            <td>{productItem.name}</td>
            <td>{productItem.price}</td>

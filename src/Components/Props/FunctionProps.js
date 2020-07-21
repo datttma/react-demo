@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function FunctionProps(props) {
-    // để nhận props bằng function thì phải truyền 1 tham số props vào , và không cần this.props nữa mà chỉ cẩn gọi đến thằng props là được
+  // để nhận props bằng function thì phải truyền 1 tham số props vào , và không cần this.props nữa mà chỉ cẩn gọi đến thằng props là được
   const { hinh, ten, tuoi } = props.dog2;
   return (
     <div>

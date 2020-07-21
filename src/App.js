@@ -12,11 +12,12 @@ import BaiTapLayout from "./Components/BaiTapLayout/BaiTapLayout";
 // import BaiTapBuoi1 from "./Components/BaiTapBuoi1/BaiTapBuoi1";
 // import BaiTapMatKinh from "./Components/BaiTapMatKinh/BaiTapMatKinh";
 import DemoProps from "./Components/Props/DemoProps";
+import ExampleCard from "./Components/LiftingUpState/ExampleCard";
 
 function App() {
   return (
     <div className="App">
-      <BaiTapLayout />
+      {/* <BaiTapLayout /> */}
       {/* <BaiTapLayout2/> */}
       {/* <DataBinding/> */}
       {/* <EventBinding/> */}
@@ -26,6 +27,7 @@ function App() {
       {/* <BaiTapBuoi1/> */}
       {/* <BaiTapMatKinh/> */}
       {/* <DemoProps/> */}
+      <ExampleCard />
     </div>
   );
 }

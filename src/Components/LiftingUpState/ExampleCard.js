@@ -43,6 +43,26 @@ export default class ExampleCard extends Component {
     cardUpdate.splice(index, 1);
     this.setState({ cardList: cardUpdate });
   };
+  // tăng giảm số lượng
+  tangGiamSoLuong = (maSP, tangGiam) => {
+    //Tăng là true còn giảm là false
+    // console.log(maSP);
+    // console.log("a", tangGiam);
+    let cardUpdate = [...this.state.cardList];
+    let index = cardUpdate.findIndex((item) => item.maSP === maSP);
+    if (index >= 0) {
+      if (tangGiam) {
+        cardUpdate[index].soLuong += 1;
+      } else {
+        if (cardUpdate[index].soLuong > 0) {
+          cardUpdate[index].soLuong -= 1;
+        }
+      }
+      this.setState({ cardList: cardUpdate });
+    }
+    // tìm ra sản phẩm chứa maSP = maSP nút tăng giảm số lượng click
+    //setState làm thay đổi số lượng
+  };
   render() {
     return (
       <div>
@@ -51,6 +71,7 @@ export default class ExampleCard extends Component {
             <Card
               cardList={this.state.cardList}
               handleDelete={this.handleDelete}
+              tangGiamSoLuong={this.tangGiamSoLuong}
             />
             <ProductList
               proList={this.state.proList}

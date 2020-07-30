@@ -10,13 +10,23 @@ export default class Card extends Component {
             <img src={card.hinhAnh} alt="asda" style={{ width: 100 }} />
           </td>
           <td>{card.tenSP}</td>
-          <td>5700000$</td>
+          <td>{card.giaBan.toLocaleString()}</td>
           <td>
-            <button className="btn btn-info">-</button>
+            <button
+              className="btn btn-info"
+              onClick={() => this.props.tangGiamSoLuong(card.maSP, false)}
+            >
+              -
+            </button>
             <span className="mx-2">{card.soLuong}</span>
-            <button className="btn btn-info">+</button>
+            <button
+              className="btn btn-info"
+              onClick={() => this.props.tangGiamSoLuong(card.maSP, true)}
+            >
+              +
+            </button>
           </td>
-          <td>{card.giaBan}</td>
+          <td>{card.giaBan.toLocaleString()}</td>
           <td>
             <button
               className="btn btn-danger"
@@ -30,6 +40,14 @@ export default class Card extends Component {
         </tr>
       );
     });
+  };
+  tinhTongTien = () => {
+    //reduce là hàm sẽ thực thi 1 lệnh cho tất cả các phần tử của 1 mảng lần lượt từ trái sang phải, và thu về 1 kết quả tích lũy. dạng như 1 +2+3+4 . tongtien sẽ là kết quả trả về, spgh sẽ là 1 đại diện cho đối tượng sản phẩm, số 0 sẽ là giá trị ban đầu.
+    return this.props.cardList
+      .reduce((tongTien, spGH, index) => {
+        return (tongTien = spGH.soLuong * spGH.giaBan);
+      }, 0)
+      .toLocaleString();
   };
   render() {
     return (
@@ -55,7 +73,7 @@ export default class Card extends Component {
               <td />
               <td />
               <td />
-              <td>32300000</td>
+              <td>{this.tinhTongTien()}</td>
             </tr>
           </tfoot>
         </table>

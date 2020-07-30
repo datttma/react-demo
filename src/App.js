@@ -13,6 +13,8 @@ import BaiTapLayout from "./Components/BaiTapLayout/BaiTapLayout";
 // import BaiTapMatKinh from "./Components/BaiTapMatKinh/BaiTapMatKinh";
 import DemoProps from "./Components/Props/DemoProps";
 import ExampleCard from "./Components/LiftingUpState/ExampleCard";
+import BaiTapGioHang from "./BaiTapRedux/BaiTapGioHang/BaiTapGioHang";
+import GameBauCua from "./GameBauCua";
 
 function App() {
   return (
@@ -27,7 +29,9 @@ function App() {
       {/* <BaiTapBuoi1/> */}
       {/* <BaiTapMatKinh/> */}
       {/* <DemoProps/> */}
-      <ExampleCard />
+      {/* <ExampleCard /> */}
+      {/* <BaiTapGioHang /> */}
+      <GameBauCua />
     </div>
   );
 }

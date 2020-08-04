@@ -62,7 +62,7 @@ const GameBauCuaReducer = (state = initialState, action) => {
       //trúng thưởng
       for (let ele of xucXac) {
         let trungThuong = danhSachCuoc.find((item) => item.ma === ele.ma);
-        console.log(trungThuong);
+        // console.log(trungThuong);
         if (trungThuong) {
           tongTien += trungThuong.giaCuoc;
         }

@@ -10,6 +10,7 @@ import rootReducer from "./redux/reducers/rootReducer";
 
 const reduxStore = createStore(
   rootReducer,
+  // thêm dòng này đê sử dụng extension react tool
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

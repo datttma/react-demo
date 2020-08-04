@@ -15,6 +15,7 @@ import DemoProps from "./Components/Props/DemoProps";
 import ExampleCard from "./Components/LiftingUpState/ExampleCard";
 import BaiTapGioHang from "./BaiTapRedux/BaiTapGioHang/BaiTapGioHang";
 import GameBauCua from "./GameBauCua";
+import GameTaiXiu from "./GameXiNgau";
 
 function App() {
   return (
@@ -31,7 +32,8 @@ function App() {
       {/* <DemoProps/> */}
       {/* <ExampleCard /> */}
       {/* <BaiTapGioHang /> */}
-      <GameBauCua />
+      {/* <GameBauCua /> */}
+      <GameTaiXiu />
     </div>
   );
 }

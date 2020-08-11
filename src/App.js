@@ -17,6 +17,7 @@ import BaiTapGioHang from "./BaiTapRedux/BaiTapGioHang/BaiTapGioHang";
 import GameBauCua from "./GameBauCua";
 import Form_Validation from "./Form_Validation/Form_Validation";
 import QLSV from "./Form_Validation/QLSV";
+import ReactLifeCycle from "./ReactLifeCyle/ReactLifeCycle";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
       {/* <GameBauCua /> */}
       {/* <Form_Validation /> */}
       <QLSV />
+      {/* <ReactLifeCycle /> */}
     </div>
   );
 }

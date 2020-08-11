@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { THEM_NGUOI_DUNG } from "../redux/constants/QLSVConst";
+//CHÚ Ý NHỚ CÀI THƯ VIỆN LODASH SO SÁNH OBJECT LÊN ĐỌC DOCS CỦA NÓ LÀ HIỂU
+//IMPORT THỬ VIỆN XỬ LÍ OBJECT MẢNG JAVASCRÍPT
+import _ from "lodash";
 class Form_Validation extends Component {
   state = {
     values: {
@@ -9,7 +12,7 @@ class Form_Validation extends Component {
       soDt: "",
       hoTen: "",
       email: "",
-      maNhom: "GP16",
+      maNhom: "",
     },
     errors: {
       taiKhoan: "",
@@ -96,7 +99,26 @@ class Form_Validation extends Component {
       nguoiDung: this.state.values,
     });
   };
+  //chạy sau khi nhận props và trước hàm render => trả về state mới
+  // static getDerivedStateFromProps(newProps, currentState) {
+  //   //props mới và state hiện tại
+  //   console.log("getDerivedStateFromProps");
+  //   console.log("new props", newProps);
+  //   if (
+  //     newProps.nguoiDungEdit.edit &&
+  //     newProps.nguoiDungEdit.taiKhoan !== currentState.values.taiKhoan
+  //   ) {
+  //     let newState = { ...currentState, values: newProps.nguoiDungEdit };
+  //     return { ...newState }; // trả về state mới
+  //   }
+  //   return null;
+  // }
+  // componentWillReceiveProps(newProps) {
+  //   // đây là life cycle cũ rồi sẽ bị warning nhưng vẫn xài được , phần comment ở trên là 2019 nhưng chưa đúng, nên cần xem lại video codepro.
+  //   this.setState({ values: newProps.nguoiDungEdit });
+  // }
   render() {
+    let { taiKhoan, email, matKhau, soDt, hoTen, maNhom } = this.state.values;
     return (
       <div class="card text-white bg-dark text-light">
         <h2 className="text-center">Form Đăng Ký</h2>
@@ -107,6 +129,7 @@ class Form_Validation extends Component {
                 <div className="form-group">
                   <p>Tài Khoản</p>
                   <input
+                    value={taiKhoan}
                     label="Tài Khoản"
                     className="form-control"
                     name="taiKhoan"
@@ -119,6 +142,7 @@ class Form_Validation extends Component {
                 <div className="form-group">
                   <p>Mật Khẩu</p>
                   <input
+                    value={matKhau}
                     label="Mật Khẩu"
                     className="form-control"
                     name="matKhau"
@@ -131,6 +155,7 @@ class Form_Validation extends Component {
                 <div className="form-group">
                   <p>Điện Thoại</p>
                   <input
+                    value={soDt}
                     type="phone"
                     label="Số Điện Thoại"
                     className="form-control"
@@ -144,6 +169,7 @@ class Form_Validation extends Component {
                 <div className="form-group">
                   <p>Họ Tên</p>
                   <input
+                    value={hoTen}
                     label="Họ tên"
                     className="form-control"
                     name="hoTen"
@@ -154,6 +180,7 @@ class Form_Validation extends Component {
                 <div className="form-group">
                   <p>Email</p>
                   <input
+                    value={email}
                     type="email"
                     label="Email"
                     className="form-control"
@@ -165,6 +192,7 @@ class Form_Validation extends Component {
                 <div className="form-group">
                   <p>Mã nhóm</p>
                   <input
+                    value={maNhom}
                     label="Mã Nhóm"
                     className="form-control"
                     name="maNhom"
@@ -175,6 +203,17 @@ class Form_Validation extends Component {
               </div>
               <div className="form-group">
                 <button className="btn btn-success">Đăng ký</button>
+                <button
+                  className="btn btn-primary ml-4"
+                  onClick={() => {
+                    this.props.dispatch({
+                      type: "CAP_NHAT",
+                      nguoiDung: this.state.values,
+                    });
+                  }}
+                >
+                  Cập nhật
+                </button>
               </div>
             </div>
           </form>
@@ -182,5 +221,20 @@ class Form_Validation extends Component {
       </div>
     );
   }
+  //preProps là props trước khi render
+  // preState là state trước khi render
+  componentDidUpdate(preProps, preState) {
+    //chỉ setState khi người dùng click chỉnh sửa
+    if (!_.isEqual(preProps.nguoiDungEdit, this.props.nguoiDungEdit)) {
+      this.setState({
+        values: this.props.nguoiDungEdit,
+      });
+    }
+  }
 }
-export default connect(null)(Form_Validation);
+const mapStateToProps = (state) => {
+  return {
+    nguoiDungEdit: state.QLSVReducer.nguoiDungEdit,
+  };
+};
+export default connect(mapStateToProps, null)(Form_Validation);

@@ -13,7 +13,27 @@ class QLSV extends Component {
           <th>{nguoiDung.email}</th>
           <th>{nguoiDung.soDt}</th>
           <th>{nguoiDung.maNhom}</th>
-          <th />
+          <th>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                this.props.dispatch({ type: "CHINH_SUA", nguoiDung });
+              }}
+            >
+              Chỉnh sửa
+            </button>
+            <button
+              className="btn btn-danger ml-2 "
+              onClick={() => {
+                this.props.dispatch({
+                  type: "XOA",
+                  nguoiDung: nguoiDung,
+                });
+              }}
+            >
+              Xóa
+            </button>
+          </th>
         </tr>
       );
     });
